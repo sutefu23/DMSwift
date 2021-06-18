@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Day: Hashable,  Codable {
+public struct Day: Hashable, Comparable, Codable {
 
     public var year: Int
     public var month: Int
