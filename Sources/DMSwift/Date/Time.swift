@@ -41,7 +41,7 @@ public struct Time: Hashable, Comparable, Codable {
         guard hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59 else { return nil }
     }
 
-    init?<T>(fmJSONTime: T?) where T: StringProtocol {
+    public init?<T>(fmJSONTime: T?) where T: StringProtocol {
         guard let parts = fmJSONTime?.split(separator: ":") else { return nil }
         if parts.count == 3 {
             guard let hour = Int(parts[0]), (0...23).contains(hour) else { return nil }

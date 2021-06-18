@@ -14,6 +14,10 @@ public struct Day: Hashable, Comparable, Codable {
     public var month: Int
     public var day: Int
     
+    public var fmString: String {
+        return "\(make2dig(month))/\(make2dig(day))/\(make4dig(year))"
+    }
+    
     public init() {
         let date = Date()
         self.year = date.yearNumber
@@ -41,7 +45,7 @@ public struct Day: Hashable, Comparable, Codable {
         self.day = day
     }
     
-    init?(fmJSONDay: String) {
+    public init?(fmJSONDay: String) {
         let parts = fmJSONDay.split(separator: "/")
         guard parts.count == 3 else { return nil }
         guard let day0 = Int(parts[0]) else { return nil }

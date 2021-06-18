@@ -44,7 +44,7 @@ public struct Month: Hashable, Strideable, Codable {
         self.month = month
     }
     
-    init(_ year: Int, _ month: Int) {
+    public init(_ year: Int, _ month: Int) {
         self.longYear = year
         self.month = month
     }

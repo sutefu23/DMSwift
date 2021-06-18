@@ -44,7 +44,7 @@ extension Date {
         self = Date(day, time)
     }
     /// FileMakerDataAPIの日付と時間
-    init?<T>(fmJSONDay: T?, fmJSONTime: T? = nil) where T : StringProtocol{
+    public init?<T>(fmJSONDay: T?, fmJSONTime: T? = nil) where T : StringProtocol{
         guard let fmJSONDay = fmJSONDay else { return nil }
         var parts = fmJSONDay.split(separator: "/")
         guard parts.count == 3 else { return nil }
