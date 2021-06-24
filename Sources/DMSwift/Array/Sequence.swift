@@ -7,7 +7,7 @@
 
 import Foundation
 extension Sequence {
-    func forEach(_ exec: (Element) async -> Void) async {
+    public func forEach(_ exec: (Element) async -> Void) async {
         for object in self {
             await exec(object)
         }
