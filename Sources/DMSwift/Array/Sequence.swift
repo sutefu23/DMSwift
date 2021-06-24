@@ -14,8 +14,8 @@ extension Sequence {
     }
 }
 
-extension Dictionary {
-    public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, (key: Key, value: Value)) async throws -> Result) async rethrows -> Result {
+extension Sequence {
+    public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, Element) async throws -> Result) async rethrows -> Result {
         var result = initialResult
         for object in self {
             result = try await nextPartialResult(result, object)
