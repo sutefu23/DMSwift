@@ -7,9 +7,19 @@
 
 import Foundation
 extension Sequence {
-    public func forEach(_ exec: (Element) async -> Void) async {
+    public func forEach(_ exec: (Element) async throws -> Void) async rethrows {
         for object in self {
-            await exec(object)
+            try await exec(object)
         }
+    }
+}
+
+extension Dictionary {
+    public func reduce<Result>(_ initialResult: Result, _ nextPartialResult: (Result, (key: Key, value: Value)) async throws -> Result) async rethrows -> Result {
+        var result = initialResult
+        for object in self {
+            result = try await nextPartialResult(result, object)
+        }
+        return result
     }
 }
