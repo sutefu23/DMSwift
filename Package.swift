@@ -23,10 +23,12 @@ let package = Package(
             dependencies: [],
             resources: [
                 .process("Resources"),
-            ]
+            ],
+            swiftSettings: [.unsafeFlags(["-Xfrontend", "-disable-availability-checking"])]
         ),
         .testTarget(
             name: "DMSwiftTests",
-            dependencies: ["DMSwift"]),
+            dependencies: ["DMSwift"],
+            swiftSettings: [.unsafeFlags(["-Xfrontend", "-disable-availability-checking"])]),
     ]
 )
